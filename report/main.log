@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.12.8)  1 JUL 2022 16:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.12.8)  1 JUL 2022 17:11
 entering extended mode
 **./main.tex
 (main.tex
@@ -674,11 +674,18 @@ LaTeX Warning: Citation 'dataset' on page 1 undefined on input line 5.
 
 [1
 
-{C:/Users/Matthias Thurnbauer/AppData/Local/MiKTeX/pdftex/config/pdftex.map}])
+{C:/Users/Matthias Thurnbauer/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [
+2]
+<images/bar_plot.pdf, id=85, 722.7pt x 433.62pt>
+File: images/bar_plot.pdf Graphic file (type pdf)
+<use images/bar_plot.pdf>
+Package pdftex.def Info: images/bar_plot.pdf  used on input line 38.
+(pdftex.def)             Requested size: 345.0pt x 206.9972pt.
+)
 
 LaTeX Warning: Empty bibliography on input line 39.
 
-[2] (main.aux)
+[3 <./images/bar_plot.pdf>] (main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -694,24 +701,28 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16441 strings out of 478927
- 280698 string characters out of 2845863
- 991128 words of memory out of 3000000
- 34104 multiletter control sequences out of 15000+600000
- 409941 words of font info for 51 fonts, out of 8000000 for 9000
+ 16470 strings out of 478927
+ 281114 string characters out of 2845863
+ 991187 words of memory out of 3000000
+ 34122 multiletter control sequences out of 15000+600000
+ 411986 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,6n,66p,743b,1143s stack positions out of 5000i,500n,10000p,200000b,80000s
 <C:/Users/Matthias Thurnbauer/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb><C:/Users/Matthias Thurnbauer/AppData/Local/Programs/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Matthias Thurnbauer/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
-/Matthias Thurnbauer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmr12.pfb><C:/Users/Matthias Thurnbauer/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Matthias Thurnbauer/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (2 pages, 96298 bytes).
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/User
+s/Matthias Thurnbauer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmr10.pfb><C:/Users/Matthias Thurnbauer/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Matthias Thurnbauer/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Matthias Th
+urnbauer/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b><C:/Users/Matthias Thurnbauer/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmti10.pfb><C:/Users/Matthias Thurnbauer/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (3 pages, 145621 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 PDF objects out of 1000 (max. 8388607)
+ 24 named destinations out of 1000 (max. 500000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 

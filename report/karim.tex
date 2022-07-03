@@ -1,16 +1,37 @@
 \section{Introduction}
 
 \subsection{Goals of our project}
+This project was our attempt at creating a version of a Naive-Bayes based spam filter for emails that would give accurate classifications of new emails. We employ Laplacian smoothing to improve the model.
 
 \subsection{Importance of problem and why it has to be solved}
 
 \subsection{Related Work}
 
+\section{Background}
+
+\subsection{Naive Bayes Classifiers}
+Naive Bayes classifiers are a category of classifiers that use probaility to predict classifications of data. Typically Naive Bayes classifiers are based on Bayes' theorem
+
+\[P(A|B) = \frac{P(B|A)P(A)}{P(B)}\]
+ 
+Using this formula one would be able to calculate a probability of an event \(A\) occuring givent the fact that event \(B\) has happened using conditional probability. 
+The same concept can then be used to find the probability of data item \(B\) being a part of class \(A\) by assuming that it indeed is a part of that class this process is done for all classes and the class that produces the highest probability is considered to be the most likely that \(B\) belongs to.
+ \subsection{Laplacian smoothing and Naive Bayes}
+ One of the problems that can occur when using Naive Bayes happens becasue we must have a likelihood calculated for each word when training the data on the training set, it can happen that the classifier has never encountered that particular word in the training set and thus cannot accurately calculate the likelihood, for that reason laplacian smoothing is introduced. This changes the formula for the liklihood to:
+ 
+ \[P(new\_word|A)= \frac{n\_word\_A + alpha}{total\_n\_words\_A + alpha*total\_n\_unique\_words}\]
+ 
+ 
+ Now, even if the word was never encountered before we will still be able to give it a probability and having it be set to zero will not disrupt the Naive Bayes classifier.
 
 \section{Methodology}
+This section goes over how the data was preprocessed and how we implemented the idea of a naive bayes classifier that uses laplacian smoothing
+\subsection{Preprocessing}
+To begin, we import the dataset and start with a data exploration and cleaning phase were we start off by randomizing the data set to avoid any biasies. Next, we can begin splitting our randomized data into test and training at an 80\% training to 20\% test. The data we use have some extra charects that would cause problems for the program and are thus removed. All text is then set to lowercase to make the process of counting and comparision of the string easier later on.
+We then extract all the unique words that exist inside the training set. We then calculate the count of each unique word we have previously detected and add that data to our training data. We now have all our training email with a sort of count encoding for each of the words in the dictionary as diffferent categories. 
 
-\subsection{Mathematical foundations of our model}
+\subsection{Implementation}
+Once our data is clean we finally get to applying naive bayes to produce a probability that can help us decide wether or not a new email is spam. We begin by calculating the probabilities for an email being spam or not, called ham. where \( P(spam) = \frac{total spam emails}{total emails} \) and \( P(ham) = \frac{total ham emails}{total emails} \) . Next we calculate the probability of each world, in the previously defined list of unique words, given that its ham and then given that its spam using Naive Bayes:  \( P(word|spam) = \frac{n\_word\_spam + alpha }{total\_n\_word\_spam+ alpha*total\_unique\_words} \) and 
+\( P(word|ham) = \frac{n\_word\_ham + alpha }{total\_n\_word\_ham + alpha*total\_unique\_words} \) . Now that we have calculated the Naive Bayes probabilities of each of our classes, we can implement them into a a function that can categorize a new email into spam or ham based on the comparison of the probability of being ham and spam given the input email.
 
-\subsection{Conceptual foundations of our model}
 
-maybe describe preprocessing parts of our notebook

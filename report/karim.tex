@@ -1,14 +1,12 @@
 \section{Introduction}
-
-\subsection{Goals of our project}
-This project was our attempt at creating a version of a Naive-Bayes based spam filter for emails that would give accurate classifications of new emails. We employ Laplacian smoothing to improve the model. 
+This project was our attempt at creating a version of a Naive-Bayes based spam filter for SMS messages that would give accurate classifications of new messages. We wanted to try to implement an improved version of the classifier rather than using the basic version. We decided to implement a version that employes Laplacian smoothing as to bypass problems that might appear on a more basic version of the Naive-Bayes classifier.
 
 
 
 
 
 \subsection{Related Work}
-
+There exists other methods for SMS and email filtering based on Bayes' theorem like  a Bayes based learner that was used to find keywords used to control traffic using a spam score. Another paper added a cost function to a Naive Bayes filter used to assign a high cost to false positives which increased precision. Other non-Bayes classifiers also exist that use k-nearest neighbor (k-NN), where the SMS is first either white or black listed and following that they are filtered to approximate concepts within the sms after which a k-NN is used to finalize the filtering process.\cite{delany_buckley_greene_2012}
 \section{Background}
 In this section the methods and mathematics that are used in our implementation are discussed.
 \subsection{Naive Bayes Classifiers}
@@ -19,7 +17,7 @@ Naive Bayes classifiers are a category of classifiers that use probability to pr
 \[P(A|B) = \frac{P(B|A)P(A)}{P(B)}\]
  
 Using this formula one would be able to calculate a probability of an event \(A\) occurring given the fact that event \(B\) has happened using conditional probability.
-The same concept can then be used to find the probability of data item \(B\) being a part of class \(A\) by assuming that it indeed is a part of that class this process is done for all classes and the class that produces the highest probability is considered to be the most likely that \(B\) belongs to.
+The same concept can then be used to find the probability of data item \(B\) being a part of class \(A\) by assuming that it indeed is a part of that class this process is done foreach class for each SMS by calculating the product of all the probabilities of the words in an SMS to be in the class of \(A\)  and the class that produces the highest probability is considered to be the most likely that \(B\) belongs to.
 
 
 \subsection{Laplacian smoothing and Naive Bayes}
@@ -37,12 +35,21 @@ One of the problems that can occur when using Naive Bayes happens because we mus
 This section goes over how the data was preprocessed and how we implemented the idea of a naive bayes classifier that uses laplacian smoothing
 \subsection{Preprocessing}
 To begin, we import the dataset and start with a data exploration and cleaning phase where we start off by randomizing the data set to avoid any biases. Next, we can begin splitting our randomized data into tests and training at an 80\% training to 20\% test. The data we use have some extra characters that would cause problems for the program and are thus removed. All text is then set to lowercase to make the process of counting and comparison of the string easier later on.
-We then extract all the unique words that exist inside the training set. We then calculate the count of each unique word we have previously detected and add that data to our training data. We now have all our training emails with a sort of count encoding for each of the words in the dictionary as different categories.
+We then extract all the unique words that exist inside the training set. We then calculate the count of each unique word we have previously detected and add that data to our training data. We now have all our training messages with a sort of count encoding for each of the words in the dictionary as different categories.
 
 
 \subsection{Implementation}
-Once our data is clean we finally get to applying naive bayes to produce a probability that can help us decide whether or not a new email is spam. We begin by calculating the probabilities for an email being spam or not, called ham. where \( P(Spam) = \frac{total spam emails}{total emails} \) and \( P(Ham) = \frac{total ham emails}{total emails} \) . Next we calculate the probability of each world, in the previously defined list of unique words, given that its ham and then given that its spam using Naive Bayes: \( P(word|Spam) = \frac{n\_word\_spam + alpha }{total\_n\_word\_spam+ alpha*total\_unique\_words} \) and
-\( P(word|Ham) = \frac{n\_word\_ham + alpha }{total\_n\_word\_ham + alpha*total\_unique\_words} \) . Now that we have calculated the Naive Bayes probabilities of each of our classes, we can implement them into a function that can categorize a new email into spam or ham based on the comparison of the probability of being ham and spam given the input email.
+Once our data is clean we finally get to applying naive bayes to produce a probability that can help us decide whether or not a new message is spam. We begin by calculating the probabilities for a message being spam or not, called ham. where 
+\[ P(Spam) = \frac{total spam messages}{total messages} \]  
+\[ P(Ham) = \frac{total ham messages}{total messages} \] 
+
+ Next we calculate the probability of each world, in the previously defined list of unique words, given that its ham and then given that its spam using Naive Bayes and Laplacian smoothing:
+ 
+ \[ P(word|Spam) = \frac{n\_word\_spam + alpha }{total\_n\_word\_spam+ alpha*total\_unique\_words} \]
+
+\[ P(word|Ham) = \frac{n\_word\_ham + alpha }{total\_n\_word\_ham + alpha*total\_unique\_words} \] 
+
+Now that we have calculated the Naive Bayes probabilities of each of our classes for each of our words, we can implement them into two dictionaries where each one saves the value of the probability and the word is the index.These saved values can be used to categorize a new message into spam or ham based on the comparison of the probability of being ham and spam given the input message.
 
 
 
